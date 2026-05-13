@@ -25,11 +25,11 @@
       --text:     #ece9e3;
       --muted:    #6e6e6e;
       --dim:      #9e9e9e;
-      --accent:   #c9a84c;
-      --accent-l: #e8c96a;
-      --accent-d: #9a7a2e;
+      --accent:   #d42020;
+      --accent-l: #e84040;
+      --accent-d: #9a1515;
       --border:   rgba(255,255,255,0.08);
-      --border-a: rgba(201,168,76,0.3);
+      --border-a: rgba(212,32,32,0.3);
       --r:        4px;
       --rl:       8px;
       --nav-h:    64px;
@@ -97,7 +97,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       background: var(--accent);
-      color: #080808;
+      color: #fff;
       padding: 13px 32px;
       border-radius: var(--r);
       transition: background var(--ease), transform var(--ease);
@@ -183,7 +183,7 @@
       letter-spacing: .09em;
       text-transform: uppercase;
       background: var(--accent);
-      color: #080808;
+      color: #fff;
       padding: 8px 20px;
       border-radius: var(--r);
       transition: background var(--ease);
@@ -243,23 +243,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: calc(var(--nav-h) + 60px) 24px 80px;
+      padding: calc(var(--nav-h) + 40px) 0 80px;
       overflow: hidden;
-      background-image: url('razed.jpg');
-      background-size: cover;
-      background-position: center center;
     }
-    /* Dark overlay — heavier at top/bottom, lighter in middle so image reads */
+    /* Red atmospheric glow */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(to bottom,
-          rgba(8,8,8,.72) 0%,
-          rgba(8,8,8,.42) 35%,
-          rgba(8,8,8,.52) 65%,
-          rgba(8,8,8,.88) 100%);
+        radial-gradient(ellipse 55% 65% at 75% 55%, rgba(180,20,20,.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 55%, rgba(212,32,32,.08) 0%, transparent 60%);
       pointer-events: none;
     }
     /* Film grain */
@@ -270,15 +263,39 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 48px;
+    }
+
+    .hero-content { text-align: left; }
+
+    .hero-poster img {
+      width: 100%;
+      max-width: 460px;
+      display: block;
+      margin: 0 auto;
+      border-radius: var(--rl);
+      box-shadow:
+        0 0 0 1px rgba(212,32,32,.25),
+        0 32px 80px rgba(212,32,32,.22),
+        0 8px 32px rgba(0,0,0,.6);
+    }
 
     /* New-release badge */
     .hero-new-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(220,40,40,.15);
-      border: 1px solid rgba(220,40,40,.5);
+      background: rgba(212,32,32,.15);
+      border: 1px solid rgba(212,32,32,.5);
       border-radius: 100px;
       padding: 6px 14px 6px 10px;
       margin-bottom: 28px;
@@ -287,12 +304,12 @@
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: #ff5555;
+      color: var(--accent-l);
     }
     .hero-new-badge-dot {
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: #ff5555;
+      background: var(--accent-l);
       animation: pulse 1.8s ease-in-out infinite;
     }
 
@@ -307,7 +324,7 @@
     }
     .hero-title {
       font-family: var(--head);
-      font-size: clamp(6rem, 20vw, 15rem);
+      font-size: clamp(4rem, 12vw, 10rem);
       font-weight: 700;
       letter-spacing: -.06em;
       line-height: .88;
@@ -315,17 +332,17 @@
       margin-bottom: 36px;
     }
     .hero-tagline {
-      font-size: clamp(1rem, 2.2vw, 1.1875rem);
+      font-size: clamp(1rem, 1.8vw, 1.125rem);
       font-weight: 300;
       color: var(--dim);
-      max-width: 480px;
-      margin: 0 auto 48px;
+      max-width: 420px;
+      margin-bottom: 48px;
       line-height: 1.7;
     }
     .hero-actions {
       display: flex;
       gap: 14px;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       margin-bottom: 52px;
     }
@@ -334,7 +351,7 @@
     .platforms {
       display: flex;
       gap: 10px;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
     }
     .platform-pill {
@@ -731,7 +748,7 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       background: var(--accent);
-      color: #080808;
+      color: #fff;
       padding: 14px 32px;
       border-radius: var(--r);
       align-self: flex-start;
@@ -813,16 +830,16 @@
       letter-spacing: .07em;
       text-transform: uppercase;
       background: var(--accent);
-      color: #080808;
+      color: #fff;
       padding: 14px 24px;
       border-radius: 100px;
-      box-shadow: 0 8px 32px rgba(201,168,76,.28);
+      box-shadow: 0 8px 32px rgba(212,32,32,.28);
       transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
     }
     .float-btn:hover {
       background: var(--accent-l);
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(201,168,76,.4);
+      box-shadow: 0 12px 40px rgba(212,32,32,.4);
     }
     .float-dot {
       width: 9px; height: 9px;
@@ -899,9 +916,30 @@
       .mobile-bar   { display: flex; }
 
       section { padding: 64px 0; }
-      /* Push content above mobile bar */
       #book { padding-bottom: 100px; }
       .footer { padding-bottom: 80px; }
+
+      .hero {
+        background-image: url('razed.jpg');
+        background-size: cover;
+        background-position: center center;
+      }
+      .hero::before {
+        background: linear-gradient(to bottom,
+          rgba(8,8,8,.7) 0%,
+          rgba(8,8,8,.45) 40%,
+          rgba(8,8,8,.85) 100%);
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0 24px;
+        text-align: center;
+      }
+      .hero-content { text-align: center; }
+      .hero-actions { justify-content: center; }
+      .platforms    { justify-content: center; }
+      .hero-poster  { display: none; }
 
       .about-grid, .book-grid { grid-template-columns: 1fr; gap: 48px; }
       .video-grid, .media-grid { grid-template-columns: 1fr; }
@@ -910,7 +948,7 @@
     }
 
     @media (max-width: 600px) {
-      .hero-title { font-size: clamp(4.5rem, 26vw, 7rem); }
+      .hero-title { font-size: clamp(4rem, 22vw, 6.5rem); }
       .platforms { gap: 8px; }
       .platform-pill { font-size: .65rem; padding: 6px 12px; }
       .photo-banner { height: 260px; }
@@ -968,25 +1006,30 @@
      HERO
      ════════════════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-new-badge">
-      <span class="hero-new-badge-dot"></span>
-      New Video Out Now
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-new-badge">
+        <span class="hero-new-badge-dot"></span>
+        New Video Out Now
+      </div>
+      <h1 class="hero-title">mrgng</h1>
+      <p class="hero-tagline">
+        R.A.Z.E.D — the new single.<br />Rock music from India &amp; France.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.youtube.com/watch?v=GfBXqhigR98" target="_blank" rel="noopener" class="btn-primary">Watch R.A.Z.E.D</a>
+        <a href="#book" class="btn-outline">Book Us</a>
+      </div>
+      <div class="platforms">
+        <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
+        <a href="https://mrgng.bandcamp.com/"                               target="_blank" rel="noopener" class="platform-pill">Bandcamp</a>
+        <a href="https://music.apple.com/us/artist/mr-gng/1632418033"       target="_blank" rel="noopener" class="platform-pill">Apple Music</a>
+        <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"  target="_blank" rel="noopener" class="platform-pill">YouTube</a>
+        <a href="https://www.tiktok.com/@mrgngofficial"                      target="_blank" rel="noopener" class="platform-pill">TikTok</a>
+      </div>
     </div>
-    <h1 class="hero-title">mrgng</h1>
-    <p class="hero-tagline">
-      R.A.Z.E.D — the new single.<br />Rock music from India &amp; France.
-    </p>
-    <div class="hero-actions">
-      <a href="https://www.youtube.com/watch?v=GfBXqhigR98" target="_blank" rel="noopener" class="btn-primary">Watch R.A.Z.E.D</a>
-      <a href="#book" class="btn-outline">Book Us</a>
-    </div>
-    <div class="platforms">
-      <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
-      <a href="https://mrgng.bandcamp.com/"                               target="_blank" rel="noopener" class="platform-pill">Bandcamp</a>
-      <a href="https://music.apple.com/us/artist/mr-gng/1632418033"       target="_blank" rel="noopener" class="platform-pill">Apple Music</a>
-      <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"  target="_blank" rel="noopener" class="platform-pill">YouTube</a>
-      <a href="https://www.tiktok.com/@mrgngofficial"                      target="_blank" rel="noopener" class="platform-pill">TikTok</a>
+    <div class="hero-poster">
+      <img src="razed.png" alt="R.A.Z.E.D — Mr. GnG official music video poster" />
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true">
@@ -1012,7 +1055,7 @@
     <p class="section-sub reveal">Every song from EPonymous ships with its own visual — from cinematic music videos to intimate live sessions.</p>
 
     <!-- Latest single featured above tabs -->
-    <div class="video-card reveal" style="margin-bottom: 48px; border-color: rgba(220,40,40,.35);">
+    <div class="video-card reveal" style="margin-bottom: 48px; border-color: var(--border-a);">
       <div class="video-embed">
         <iframe src="https://www.youtube-nocookie.com/embed/GfBXqhigR98?rel=0&modestbranding=1"
           title="Mr. GnG – R.A.Z.E.D (Official Music Video)"
@@ -1021,7 +1064,7 @@
           allowfullscreen></iframe>
       </div>
       <div class="video-info">
-        <p class="video-tag" style="color:#ff5555;">New Release · Official Music Video</p>
+        <p class="video-tag">New Release · Official Music Video</p>
         <h3 class="video-title">R.A.Z.E.D</h3>
         <p class="video-meta">Latest single</p>
       </div>
@@ -1508,7 +1551,7 @@
         </div>
 
         <div class="sidebar-card reveal" style="background: var(--bg4); border-color: var(--border-a);">
-          <div class="sidebar-title" style="color: var(--accent);">Based in India &amp; France</div>
+          <div class="sidebar-title">Based in India &amp; France</div>
           <p class="sidebar-text" style="margin-bottom: 0;">
             Available for shows, festivals, and remote collaborations globally. We travel for the right gig.
           </p>
