@@ -430,30 +430,6 @@
     /* ── Video Section ──────────────────────────────── */
     .videos-section { background: var(--bg); }
 
-    .tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
-      gap: 0;
-    }
-    .tab-btn {
-      font-family: var(--head);
-      font-size: .82rem;
-      font-weight: 500;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 12px 24px;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color var(--ease), border-color var(--ease);
-    }
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1135,11 +1111,11 @@
      ════════════════════════════════════════ -->
 <section class="videos-section" id="videos">
   <div class="container">
-    <p class="label reveal">Music</p>
+    <p class="label reveal">Music &amp; Live</p>
     <h2 class="section-title reveal">Videos</h2>
-    <p class="section-sub reveal">Every song from EPonymous ships with its own visual — from cinematic music videos to intimate live sessions.</p>
+    <p class="section-sub reveal">Music videos, live sessions, and unplugged performances — everything from the last two years.</p>
 
-    <!-- Latest single featured above tabs -->
+    <!-- R.A.Z.E.D — featured -->
     <div class="video-card reveal" style="margin-bottom: 48px; border-color: var(--border-a);">
       <div class="video-embed">
         <iframe src="https://www.youtube-nocookie.com/embed/GfBXqhigR98?rel=0&modestbranding=1"
@@ -1149,166 +1125,104 @@
           allowfullscreen></iframe>
       </div>
       <div class="video-info">
-        <p class="video-tag">New Release · Official Music Video</p>
+        <p class="video-tag">New Release · Official Music Video · 2026</p>
         <h3 class="video-title">R.A.Z.E.D</h3>
         <p class="video-meta">Latest single</p>
       </div>
     </div>
 
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="mv">Music Videos</button>
-      <button class="tab-btn"        data-tab="live">Live Performances</button>
-    </div>
+    <div class="video-grid">
 
-    <!-- Music Videos -->
-    <div class="tab-panel active" id="tab-mv">
-
-      <div class="tab-subheading">after Us, The Flood — 2025</div>
-      <div class="video-grid">
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/Eew6-AUDb5s?rel=0&modestbranding=1"
-              title="Mr. GnG – Paralyse ft. Rudy Ayoub (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · after Us, The Flood</p>
-            <h3 class="video-title">Paralyse <span style="font-weight:400;color:var(--muted)">ft. Rudy Ayoub</span></h3>
-            <p class="video-meta">Track 3 · 4:32</p>
-          </div>
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/f3OwGXDUxb4?rel=0&modestbranding=1"
+            title="Mr. GnG – A Call Away (Official Music Video) Ft. Aatrey Bhatt"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/C15ag2-OsAk?rel=0&modestbranding=1"
-              title="Mr. GnG – Room 103 (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · after Us, The Flood</p>
-            <h3 class="video-title">Room 103</h3>
-            <p class="video-meta">Track 4 · 4:14</p>
-          </div>
+        <div class="video-info">
+          <p class="video-tag">Official Music Video · after Us, The Flood · 2025</p>
+          <h3 class="video-title">A Call Away <span style="font-weight:400;color:var(--muted)">ft. Aatrey Bhatt</span></h3>
+          <p class="video-meta">Track 2 · 4:20</p>
         </div>
       </div>
 
-      <div class="tab-subheading">EPonymous — 2022</div>
-      <div class="video-grid">
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/PoBnJFXcVdY?rel=0&modestbranding=1"
-              title="Mr. GnG – Goodbye, Mr. GnG (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · EPonymous</p>
-            <h3 class="video-title">Goodbye, Mr. GnG</h3>
-            <p class="video-meta">Track 1 · 4:25</p>
-          </div>
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/Eew6-AUDb5s?rel=0&modestbranding=1"
+            title="Mr. GnG – Paralyse ft. Rudy Ayoub (Official Music Video)"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/bn0in8LnQqA?rel=0&modestbranding=1"
-              title="Mr. GnG – Within(Parenthesis) (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · EPonymous</p>
-            <h3 class="video-title">Within(Parenthesis)</h3>
-            <p class="video-meta">Track 2 · 6:18</p>
-          </div>
-        </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/kgvJjBvJf4g?rel=0&modestbranding=1"
-              title="Mr. GnG – Contraband 464 (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · EPonymous</p>
-            <h3 class="video-title">Contraband 464</h3>
-            <p class="video-meta">Track 3 · 5:55</p>
-          </div>
-        </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/hoWpU1sHVyA?rel=0&modestbranding=1"
-              title="Mr. GnG – Halcyon Days (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Official Music Video · EPonymous</p>
-            <h3 class="video-title">Halcyon Days</h3>
-            <p class="video-meta">Track 4 · 4:30</p>
-          </div>
-        </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/cwEIFjCf_qk?rel=0&modestbranding=1"
-              title="Chasing Dragon Tails – Unplugged (Official Music Video)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Unplugged · EPonymous</p>
-            <h3 class="video-title">Chasing Dragon Tails</h3>
-            <p class="video-meta">Track 5 · 6:02</p>
-          </div>
+        <div class="video-info">
+          <p class="video-tag">Official Music Video · after Us, The Flood · 2025</p>
+          <h3 class="video-title">Paralyse <span style="font-weight:400;color:var(--muted)">ft. Rudy Ayoub</span></h3>
+          <p class="video-meta">Track 3 · 4:32</p>
         </div>
       </div>
 
-    </div>
-
-    <!-- Live Performances -->
-    <div class="tab-panel" id="tab-live">
-      <div class="video-grid">
-        <div class="video-card span2 reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/j3CHjHUKvgM?rel=0&modestbranding=1"
-              title="Xperience Sessions — Mr. GnG | Indigo Music"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Featured Session · Indigo Music · 2025</p>
-            <h3 class="video-title">Xperience Sessions — Mr. GnG</h3>
-            <p class="video-meta">Presented by Indigo Music</p>
-          </div>
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/j3CHjHUKvgM?rel=0&modestbranding=1"
+            title="Xperience Sessions — Mr. GnG | Indigo Music"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
-
-        <div class="video-card reveal">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/qgAWo7VZiq0?rel=0&modestbranding=1"
-              title="Mr. GnG – Rock Music LIVE (Full Set)"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <p class="video-tag">Live Performance · Oct 2023</p>
-            <h3 class="video-title">Rock Music LIVE — Full Set</h3>
-            <p class="video-meta">Complete set from EPonymous</p>
-          </div>
+        <div class="video-info">
+          <p class="video-tag">Live Session · Indigo Music · 2025</p>
+          <h3 class="video-title">Xperience Sessions — Mr. GnG</h3>
+          <p class="video-meta">Presented by Indigo Music</p>
         </div>
       </div>
+
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/sH0NfdL0lCU?rel=0&modestbranding=1"
+            title="Mr. GnG – Silence That Remains (Official Music Video)"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">Official Music Video · after Us, The Flood · 2024</p>
+          <h3 class="video-title">Silence That Remains</h3>
+          <p class="video-meta">Track 6 · 3:32</p>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/C15ag2-OsAk?rel=0&modestbranding=1"
+            title="Mr. GnG – Room 103 (Official Music Video)"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">Official Music Video · after Us, The Flood · 2023</p>
+          <h3 class="video-title">Room 103</h3>
+          <p class="video-meta">Track 4 · 4:14</p>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/6yBhHlzsgn0?rel=0&modestbranding=1"
+            title="Mr. GnG – Within (Unplugged)"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">Unplugged · 2024</p>
+          <h3 class="video-title">Within (Unplugged)</h3>
+          <p class="video-meta">From EPonymous</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1595,17 +1509,6 @@
       toggle.classList.remove('open');
       drawer.classList.remove('open');
       document.body.style.overflow = '';
-    });
-  });
-
-  /* ── Tab switching ────────────────────────────── */
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.tab;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + id).classList.add('active');
     });
   });
 
