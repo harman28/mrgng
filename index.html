@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mrgng — Official</title>
+  <meta name="description" content="Mr. GnG make rock music and spend way too much time making videos for all their songs. Two-piece from India &amp; France." />
+  <meta property="og:title" content="mrgng — Official" />
+  <meta property="og:description" content="Rock music from India &amp; France. Book us for your next event." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080808" />
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Variables ─────────────────────────────────── */
+    :root {
+      --bg:       #080808;
+      --bg2:      #111111;
+      --bg3:      #1a1a1a;
+      --bg4:      #222222;
+      --text:     #ece9e3;
+      --muted:    #6e6e6e;
+      --dim:      #9e9e9e;
+      --accent:   #c9a84c;
+      --accent-l: #e8c96a;
+      --accent-d: #9a7a2e;
+      --border:   rgba(255,255,255,0.08);
+      --border-a: rgba(201,168,76,0.3);
+      --r:        4px;
+      --rl:       8px;
+      --nav-h:    64px;
+      --ease:     200ms ease;
+      --head:     'Space Grotesk', system-ui, sans-serif;
+      --body:     'Inter', system-ui, sans-serif;
+    }
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img  { display: block; max-width: 100%; }
+    a    { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+    input, select, textarea { font: inherit; }
+
+    /* ── Utilities ─────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: 96px 0; }
+
+    .label {
+      font-family: var(--head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--head);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--dim);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--head);
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #080808;
+      padding: 13px 32px;
+      border-radius: var(--r);
+      transition: background var(--ease), transform var(--ease);
+    }
+    .btn-primary:hover { background: var(--accent-l); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--head);
+      font-size: .875rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-a);
+      color: var(--accent);
+      padding: 13px 32px;
+      border-radius: var(--r);
+      transition: border-color var(--ease), background var(--ease), transform var(--ease);
+    }
+    .btn-outline:hover { background: rgba(201,168,76,.08); border-color: var(--accent); transform: translateY(-1px); }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── Navigation ─────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--ease), border-color var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(8,8,8,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      font-family: var(--head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--head);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--ease);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-book {
+      font-family: var(--head);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #080808;
+      padding: 8px 20px;
+      border-radius: var(--r);
+      transition: background var(--ease);
+    }
+    .nav-book:hover { background: var(--accent-l); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 300ms ease, opacity 300ms ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 199;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+    .nav-drawer.open { opacity: 1; pointer-events: auto; }
+    .nav-drawer a {
+      font-family: var(--head);
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: var(--muted);
+      transition: color var(--ease);
+    }
+    .nav-drawer a:hover { color: var(--text); }
+    .nav-drawer .book-link { color: var(--accent); }
+
+    /* ── Hero ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 60px) 24px 80px;
+      overflow: hidden;
+    }
+    /* Atmospheric glow */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% 45%, rgba(201,168,76,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(120,90,30,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* Film grain */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+    .hero-eyebrow {
+      font-family: var(--head);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--head);
+      font-size: clamp(6rem, 20vw, 15rem);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: .88;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.2vw, 1.1875rem);
+      font-weight: 300;
+      color: var(--dim);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+
+    /* Streaming pill links */
+    .platforms {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .platform-pill {
+      font-family: var(--head);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .platform-pill:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-family: var(--head);
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ── Photo Banner (drop in your image here) ─────── */
+    .photo-banner {
+      width: 100%;
+      height: 420px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--head);
+      font-size: .875rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .photo-banner.has-photo {
+      background-image: url('bandpic.jpg');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .photo-banner.has-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(8,8,8,.1) 0%, rgba(8,8,8,.6) 100%);
+    }
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      opacity: .35;
+    }
+    .photo-placeholder svg { width: 48px; height: 48px; }
+
+    /* ── Video Section ──────────────────────────────── */
+    .videos-section { background: var(--bg); }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+      gap: 0;
+    }
+    .tab-btn {
+      font-family: var(--head);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 24px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .video-card.span2 { grid-column: 1 / -1; }
+
+    .video-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      overflow: hidden;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .video-card:hover { border-color: var(--border-a); }
+
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-info { padding: 16px 20px 20px; }
+    .video-tag {
+      font-family: var(--head);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    .video-title {
+      font-family: var(--head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .video-meta { font-size: .8125rem; color: var(--muted); margin-top: 3px; }
+
+    .tab-subheading {
+      font-family: var(--head);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+      margin-top: 48px;
+    }
+    .tab-subheading:first-child { margin-top: 0; }
+
+    /* ── About ──────────────────────────────────────── */
+    .about-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text { font-size: 1.0625rem; color: var(--dim); line-height: 1.85; }
+    .about-text p { margin-bottom: 20px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .about-quote {
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--accent);
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      margin: 32px 0;
+      line-height: 1.65;
+    }
+
+    /* EP card */
+    .ep-card {
+      margin-top: 40px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 24px;
+    }
+    .ep-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .ep-art {
+      width: 60px; height: 60px;
+      background: var(--bg4);
+      border: 1px solid var(--border-a);
+      border-radius: var(--r);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--head);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .ep-name { font-family: var(--head); font-size: 1.0625rem; font-weight: 700; color: var(--text); }
+    .ep-date { font-size: .8125rem; color: var(--muted); margin-top: 3px; }
+
+    .tracklist { list-style: none; border-top: 1px solid var(--border); }
+    .tracklist li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .875rem;
+    }
+    .track-num { font-family: var(--head); font-size: .75rem; color: var(--muted); width: 14px; flex-shrink: 0; }
+    .track-name { flex: 1; color: var(--text); font-weight: 500; }
+    .track-dur  { font-family: var(--head); font-size: .8rem; color: var(--muted); }
+
+    .ep-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .stream-btn {
+      font-family: var(--head);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--dim);
+      transition: border-color var(--ease), color var(--ease);
+    }
+    .stream-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Members */
+    .members { display: flex; flex-direction: column; gap: 16px; }
+    .member-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 22px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color var(--ease);
+    }
+    .member-card:hover { border-color: var(--border-a); }
+    .member-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--bg4);
+      border: 1px solid var(--border-a);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .member-name { font-family: var(--head); font-size: .9375rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .member-role { font-size: .8125rem; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+    .member-bio  { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── Media ──────────────────────────────────────── */
+    .media-section { background: var(--bg); }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .media-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--ease);
+    }
+    .media-card:hover { border-color: var(--border-a); }
+    .media-card.span3 { grid-column: 1 / -1; }
+
+    .media-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .media-source {
+      font-family: var(--head);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .media-title {
+      font-family: var(--head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .media-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; flex: 1; }
+    .media-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--head);
+      font-size: .8125rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 16px;
+      transition: gap var(--ease);
+    }
+    .media-link:hover { gap: 10px; }
+
+    /* ── Book Section ───────────────────────────────── */
+    .book-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+    .book-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .book-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-family: var(--head);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--text);
+      font-size: .9375rem;
+      padding: 12px 15px;
+      width: 100%;
+      transition: border-color var(--ease);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+    .form-textarea { resize: vertical; min-height: 128px; }
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e6e6e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-select option { background: var(--bg3); }
+
+    .btn-submit {
+      font-family: var(--head);
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #080808;
+      padding: 14px 32px;
+      border-radius: var(--r);
+      align-self: flex-start;
+      transition: background var(--ease), transform var(--ease);
+    }
+    .btn-submit:hover { background: var(--accent-l); transform: translateY(-1px); }
+
+    /* Form success */
+    .form-success {
+      display: none;
+      background: var(--bg3);
+      border: 1px solid var(--border-a);
+      border-radius: var(--rl);
+      padding: 40px;
+      text-align: center;
+    }
+    .form-success.show { display: block; }
+    .form-success-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .form-success-title { font-family: var(--head); font-size: 1.25rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .form-success-text  { color: var(--muted); font-size: .9375rem; }
+
+    /* Sidebar cards */
+    .book-sidebar { display: flex; flex-direction: column; gap: 14px; }
+    .sidebar-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 22px;
+    }
+    .sidebar-title { font-family: var(--head); font-size: .9375rem; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+    .sidebar-text  { font-size: .875rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+
+    .ig-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--head);
+      font-size: .875rem;
+      font-weight: 600;
+      background: var(--bg4);
+      border: 1px solid var(--border-a);
+      color: var(--accent);
+      padding: 11px 16px;
+      border-radius: var(--r);
+      transition: background var(--ease);
+    }
+    .ig-link:hover { background: rgba(201,168,76,.1); }
+
+    .social-links { display: flex; flex-direction: column; gap: 10px; }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--head);
+      font-size: .8375rem;
+      font-weight: 500;
+      color: var(--dim);
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      padding: 10px 15px;
+      border-radius: var(--r);
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .social-link:hover { color: var(--accent); border-color: var(--border-a); }
+
+    /* ── Floating Book CTA ──────────────────────────── */
+    .float-book {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 190;
+    }
+    .float-btn {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--head);
+      font-size: .875rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #080808;
+      padding: 14px 24px;
+      border-radius: 100px;
+      box-shadow: 0 8px 32px rgba(201,168,76,.28);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .float-btn:hover {
+      background: var(--accent-l);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,168,76,.4);
+    }
+    .float-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #080808;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .45; transform: scale(.75); }
+    }
+
+    /* ── Mobile Book Bar ────────────────────────────── */
+    .mobile-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 190;
+      background: rgba(8,8,8,.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-a);
+      padding: 12px 20px 16px;
+      gap: 12px;
+    }
+    .mobile-bar .btn-primary,
+    .mobile-bar .btn-outline { flex: 1; text-align: center; padding: 12px; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 52px 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-link {
+      font-family: var(--head);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--ease);
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-copy { font-size: .8125rem; color: var(--muted); opacity: .5; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-book { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-drawer { display: flex; }
+
+      .float-book   { display: none; }
+      .mobile-bar   { display: flex; }
+
+      section { padding: 64px 0; }
+      /* Push content above mobile bar */
+      #book { padding-bottom: 100px; }
+      .footer { padding-bottom: 80px; }
+
+      .about-grid, .book-grid { grid-template-columns: 1fr; gap: 48px; }
+      .video-grid, .media-grid { grid-template-columns: 1fr; }
+      .video-card.span2, .media-card.span3 { grid-column: 1; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: clamp(4.5rem, 26vw, 7rem); }
+      .platforms { gap: 8px; }
+      .platform-pill { font-size: .65rem; padding: 6px 12px; }
+      .photo-banner { height: 260px; }
+      .media-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     FLOATING BOOK CTA — always visible desktop
+     ════════════════════════════════════════ -->
+<a href="#book" class="float-book" aria-label="Book mrgng">
+  <div class="float-btn">
+    <span class="float-dot"></span>
+    Book Us
+  </div>
+</a>
+
+<!-- Mobile bottom bar — always visible mobile -->
+<div class="mobile-bar">
+  <a href="#book" class="btn-primary">Book Us</a>
+  <a href="https://www.instagram.com/mrgngofficial/" target="_blank" rel="noopener" class="btn-outline">DM on IG</a>
+</div>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">mr<span>gng</span></a>
+      <ul class="nav-links">
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#book" class="nav-book">Book Us</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#videos"  class="drawer-link">Videos</a>
+  <a href="#about"   class="drawer-link">About</a>
+  <a href="#media"   class="drawer-link">Media</a>
+  <a href="#book"    class="drawer-link book-link">Book Us</a>
+</div>
+
+<!-- ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Rock music · India &amp; France</p>
+    <h1 class="hero-title">mrgng</h1>
+    <p class="hero-tagline">
+      We make rock music and spend way too much time<br />making videos for all our songs.
+    </p>
+    <div class="hero-actions">
+      <a href="#videos" class="btn-primary">Watch</a>
+      <a href="#book"   class="btn-outline">Book Us</a>
+    </div>
+    <div class="platforms">
+      <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
+      <a href="https://mrgng.bandcamp.com/"                               target="_blank" rel="noopener" class="platform-pill">Bandcamp</a>
+      <a href="https://music.apple.com/us/artist/mr-gng/1632418033"       target="_blank" rel="noopener" class="platform-pill">Apple Music</a>
+      <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"  target="_blank" rel="noopener" class="platform-pill">YouTube</a>
+      <a href="https://www.tiktok.com/@mrgngofficial"                      target="_blank" rel="noopener" class="platform-pill">TikTok</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 2v10M2 8l5 4 5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     BAND PHOTO  — replace background-image in CSS
+     ════════════════════════════════════════ -->
+<div class="photo-banner has-photo" id="photoBanner"></div>
+
+<!-- ════════════════════════════════════════
+     VIDEOS
+     ════════════════════════════════════════ -->
+<section class="videos-section" id="videos">
+  <div class="container">
+    <p class="label reveal">Music</p>
+    <h2 class="section-title reveal">Videos</h2>
+    <p class="section-sub reveal">Every song from EPonymous ships with its own visual — from cinematic music videos to intimate live sessions.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="mv">Music Videos</button>
+      <button class="tab-btn"        data-tab="live">Live Performances</button>
+    </div>
+
+    <!-- Music Videos -->
+    <div class="tab-panel active" id="tab-mv">
+
+      <div class="tab-subheading">after Us, The Flood — 2025</div>
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/Eew6-AUDb5s?rel=0&modestbranding=1"
+              title="Mr. GnG – Paralyse ft. Rudy Ayoub (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · after Us, The Flood</p>
+            <h3 class="video-title">Paralyse <span style="font-weight:400;color:var(--muted)">ft. Rudy Ayoub</span></h3>
+            <p class="video-meta">Track 3 · 4:32</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/C15ag2-OsAk?rel=0&modestbranding=1"
+              title="Mr. GnG – Room 103 (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · after Us, The Flood</p>
+            <h3 class="video-title">Room 103</h3>
+            <p class="video-meta">Track 4 · 4:14</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-subheading">EPonymous — 2022</div>
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/PoBnJFXcVdY?rel=0&modestbranding=1"
+              title="Mr. GnG – Goodbye, Mr. GnG (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · EPonymous</p>
+            <h3 class="video-title">Goodbye, Mr. GnG</h3>
+            <p class="video-meta">Track 1 · 4:25</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/bn0in8LnQqA?rel=0&modestbranding=1"
+              title="Mr. GnG – Within(Parenthesis) (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · EPonymous</p>
+            <h3 class="video-title">Within(Parenthesis)</h3>
+            <p class="video-meta">Track 2 · 6:18</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/kgvJjBvJf4g?rel=0&modestbranding=1"
+              title="Mr. GnG – Contraband 464 (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · EPonymous</p>
+            <h3 class="video-title">Contraband 464</h3>
+            <p class="video-meta">Track 3 · 5:55</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/hoWpU1sHVyA?rel=0&modestbranding=1"
+              title="Mr. GnG – Halcyon Days (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Official Music Video · EPonymous</p>
+            <h3 class="video-title">Halcyon Days</h3>
+            <p class="video-meta">Track 4 · 4:30</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/cwEIFjCf_qk?rel=0&modestbranding=1"
+              title="Chasing Dragon Tails – Unplugged (Official Music Video)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Unplugged · EPonymous</p>
+            <h3 class="video-title">Chasing Dragon Tails</h3>
+            <p class="video-meta">Track 5 · 6:02</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Performances -->
+    <div class="tab-panel" id="tab-live">
+      <div class="video-grid">
+        <div class="video-card span2 reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/j3CHjHUKvgM?rel=0&modestbranding=1"
+              title="Xperience Sessions — Mr. GnG | Indigo Music"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Featured Session · Indigo Music · 2025</p>
+            <h3 class="video-title">Xperience Sessions — Mr. GnG</h3>
+            <p class="video-meta">Presented by Indigo Music</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/qgAWo7VZiq0?rel=0&modestbranding=1"
+              title="Mr. GnG – Rock Music LIVE (Full Set)"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <p class="video-tag">Live Performance · Oct 2023</p>
+            <h3 class="video-title">Rock Music LIVE — Full Set</h3>
+            <p class="video-meta">Complete set from EPonymous</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left: story + EP -->
+      <div>
+        <p class="label reveal">About the Band</p>
+        <h2 class="section-title reveal">The Story</h2>
+        <div class="about-text reveal">
+          <blockquote class="about-quote">
+            "We make rock music and spend way too much time making videos for all our songs."
+          </blockquote>
+          <p>
+            <strong>Mr. GnG</strong> is a two-piece rock band born from an unlikely pandemic reunion. Ishan Dave (India) and Abhilash Sreekumar (France) were college friends who reconnected after six years apart and realised they had unfinished musical business.
+          </p>
+          <p>
+            Recording and producing remotely across continents, the duo crafted their debut EP <strong>EPonymous</strong> — five songs, five music videos — dropping it on Christmas Day 2022. The record moves through themes of farewell, longing, hope, and raw catharsis, with each track paired with a dedicated visual.
+          </p>
+          <p>
+            In 2025, they returned with <strong>after Us, The Flood</strong> — a full-length album and a significant leap forward. Twelve tracks exploring self-doubt, abandonment, and existential vulnerability, featuring guest appearances from LA guitarist Rudy Ayoub and guitarist Aatrey Bhatt.
+          </p>
+          <p>
+            For mrgng, the sonic and the visual are inseparable. Everything is self-produced, self-directed, and uncompromising — from the studio to the stage.
+          </p>
+        </div>
+
+        <div class="ep-card reveal" style="border-color: var(--border-a);">
+          <div class="ep-header">
+            <div class="ep-art" style="padding:0;overflow:hidden;background:var(--bg4);">
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:.55rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-align:center;text-transform:uppercase;line-height:1.4;">after Us<br/>The Flood</div>
+            </div>
+            <div>
+              <div class="ep-name">after Us, The Flood</div>
+              <div class="ep-date">Album · 2025</div>
+            </div>
+          </div>
+          <ol class="tracklist">
+            <li><span class="track-num">1</span><span class="track-name">Cognitive Haze <span style="color:var(--muted);font-size:.8em">ft. Aatrey Bhatt</span></span><span class="track-dur">4:03</span></li>
+            <li><span class="track-num">2</span><span class="track-name">A Call Away <span style="color:var(--muted);font-size:.8em">ft. Aatrey Bhatt</span></span><span class="track-dur">4:20</span></li>
+            <li><span class="track-num">3</span><span class="track-name">Paralyse <span style="color:var(--muted);font-size:.8em">ft. Rudy Ayoub</span></span><span class="track-dur">4:32</span></li>
+            <li><span class="track-num">4</span><span class="track-name">Room 103</span><span class="track-dur">4:14</span></li>
+            <li><span class="track-num">5</span><span class="track-name">Mr. Invisible</span><span class="track-dur">3:38</span></li>
+            <li><span class="track-num">6</span><span class="track-name">Silence That Remains</span><span class="track-dur">3:32</span></li>
+            <li><span class="track-num">7</span><span class="track-name">Shimona</span><span class="track-dur">4:17</span></li>
+            <li><span class="track-num">8</span><span class="track-name">The Show Must Go On</span><span class="track-dur">3:53</span></li>
+            <li><span class="track-num">9</span><span class="track-name">The Melody Song I: Second Chances</span><span class="track-dur">1:44</span></li>
+            <li><span class="track-num">10</span><span class="track-name">The Melody Song II: No Place for Freaks</span><span class="track-dur">2:33</span></li>
+            <li><span class="track-num">11</span><span class="track-name">The Melody Song III: Your Gravity</span><span class="track-dur">2:26</span></li>
+            <li><span class="track-num">12</span><span class="track-name">The Melody Song IV: One Way Street</span><span class="track-dur">1:36</span></li>
+          </ol>
+          <div class="ep-links">
+            <a href="https://open.spotify.com/album/319UnXdX7uzKpAVeFey022"   target="_blank" rel="noopener" class="stream-btn">Spotify</a>
+            <a href="https://music.apple.com/us/album/after-us-the-flood/1802131065" target="_blank" rel="noopener" class="stream-btn">Apple Music</a>
+            <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A" target="_blank" rel="noopener" class="stream-btn">YouTube</a>
+          </div>
+        </div>
+
+        <div class="ep-card reveal">
+          <div class="ep-header">
+            <div class="ep-art" style="padding:0;overflow:hidden;"><img src="youtube.jpg" alt="EPonymous cover" style="width:100%;height:100%;object-fit:cover;border-radius:3px;" /></div>
+            <div>
+              <div class="ep-name">EPonymous</div>
+              <div class="ep-date">Debut EP · December 25, 2022</div>
+            </div>
+          </div>
+          <ol class="tracklist">
+            <li><span class="track-num">1</span><span class="track-name">Goodbye, Mr. GnG</span><span class="track-dur">4:25</span></li>
+            <li><span class="track-num">2</span><span class="track-name">Within(Parenthesis)</span><span class="track-dur">6:18</span></li>
+            <li><span class="track-num">3</span><span class="track-name">Contraband 464</span><span class="track-dur">5:55</span></li>
+            <li><span class="track-num">4</span><span class="track-name">Halcyon Days</span><span class="track-dur">4:30</span></li>
+            <li><span class="track-num">5</span><span class="track-name">Chasing Dragon Tails</span><span class="track-dur">6:02</span></li>
+          </ol>
+          <div class="ep-links">
+            <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"         target="_blank" rel="noopener" class="stream-btn">Spotify</a>
+            <a href="https://mrgng.bandcamp.com/album/eponymous"                       target="_blank" rel="noopener" class="stream-btn">Bandcamp</a>
+            <a href="https://music.apple.com/us/artist/mr-gng/1632418033"              target="_blank" rel="noopener" class="stream-btn">Apple Music</a>
+            <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"        target="_blank" rel="noopener" class="stream-btn">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: members -->
+      <div>
+        <p class="label reveal">Members</p>
+        <div class="members">
+          <div class="member-card reveal">
+            <div class="member-avatar">ID</div>
+            <div>
+              <div class="member-name">Ishan Dave</div>
+              <div class="member-role">Vocals · Guitar · Producer</div>
+              <div class="member-bio">Based in India. Writes and records from home. Fronts mrgng with a guitar sound that swings between cathartic and carefully restrained — and directs the band's visual output.</div>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="member-avatar">AS</div>
+            <div>
+              <div class="member-name">Abhilash Sreekumar</div>
+              <div class="member-role">Keys · Drums · Producer</div>
+              <div class="member-bio">Based in France. Handles the rhythmic and harmonic architecture across thousands of miles — late nights and a laptop producing every beat and chord on the EP.</div>
+            </div>
+          </div>
+
+          <div class="member-card reveal" style="opacity:.7; border-style: dashed;">
+            <div class="member-avatar" style="opacity:.5;">TN</div>
+            <div>
+              <div class="member-name">Thejus Nair</div>
+              <div class="member-role">Mix &amp; Mastering</div>
+              <div class="member-bio">Mixed and mastered EPonymous — shaping the final sonic character of mrgng's debut release.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     IN THE MEDIA
+     ════════════════════════════════════════ -->
+<section class="media-section" id="media">
+  <div class="container">
+    <p class="label reveal">Press &amp; Features</p>
+    <h2 class="section-title reveal">In the Media</h2>
+    <p class="section-sub reveal">From curated indie sessions to digital press — where mrgng has shown up.</p>
+
+    <div class="media-grid">
+      <!-- Featured: full-width video embed -->
+      <div class="media-card span3 reveal">
+        <div class="video-embed" style="border-radius: 7px 7px 0 0; overflow: hidden;">
+          <iframe src="https://www.youtube-nocookie.com/embed/j3CHjHUKvgM?rel=0&modestbranding=1"
+            title="Xperience Sessions — Mr. GnG | Indigo Music"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="media-body">
+          <p class="media-source">Indigo Music · Xperience Sessions · 2025</p>
+          <h3 class="media-title">Xperience Sessions featuring indie band Mr. GNG</h3>
+          <p class="media-desc">
+            Hand-picked by Indigo Music for their Xperience Sessions series — showcasing India's finest independent artists. Ishan and Abhilash deliver an intimate set that captures the band's raw energy live.
+          </p>
+          <a href="https://www.youtube.com/watch?v=j3CHjHUKvgM" target="_blank" rel="noopener" class="media-link">Watch on YouTube →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">Earmilk · April 2025</p>
+          <h3 class="media-title">Mr.GNG breaks the dam of emotion with daring new album "After Us, The Flood"</h3>
+          <p class="media-desc">
+            "Each track is a diary page torn out and scored with atmospheric instrumentation and raw, soul-exposing vocals." Earmilk on the 12-track record — 40 minutes of alt-rock that moves from vulnerability to resilience.
+          </p>
+          <a href="https://earmilk.com/2025/04/15/mr-gng-breaks-the-dam-of-emotion-with-daring-new-album-after-us-the-flood/" target="_blank" rel="noopener" class="media-link">Read on Earmilk →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">BeatCurry · 2026</p>
+          <h3 class="media-title">Mr. GnG Dives Deep in 'after Us, The Flood' — Progressive, Personal, Powerful</h3>
+          <p class="media-desc">
+            "A sprawling, fearless, and deeply introspective work" — BeatCurry on the India-Paris duo's latest record, praising its blend of technical proficiency and emotional vulnerability across themes of heartbreak, self-doubt, and resilience.
+          </p>
+          <a href="https://www.beatcurry.com/mr-gng-dives-deep-in-after-us-the-flood-as-progressive-personal-powerful/" target="_blank" rel="noopener" class="media-link">Read on BeatCurry →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">Rolling Stone India · Jan 2023</p>
+          <h3 class="media-title">Fresh Indie Fridays #71</h3>
+          <p class="media-desc">
+            Rolling Stone India spotlights EPonymous: "scintillating five-track debut EP filled with hard-hitting rock-meets-metal tracks, melancholic ballads and more" — praising the stellar vocals and hands-on production.
+          </p>
+          <a href="https://rollingstoneindia.com/fresh-indie-fridays-71/" target="_blank" rel="noopener" class="media-link">Read on Rolling Stone India →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">Rolling Stone India · Oct 2022</p>
+          <h3 class="media-title">New Music Roundup — debut single featured</h3>
+          <p class="media-desc">
+            Rolling Stone India on 'Goodbye, Mr. GnG': the band "reaches into that cinematic, roaring prog rock and metal space with multiple movements all packed together."
+          </p>
+          <a href="https://rollingstoneindia.com/new-music-takar-nabam-meba-ofilia-north-axis-project-mocaine-abhinav-saxena-manisha-eerabathini/" target="_blank" rel="noopener" class="media-link">Read on Rolling Stone India →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">BraveWords · 2022</p>
+          <h3 class="media-title">Mr. GnG Releases First Single 'Goodbye Mr. GnG' + Music Video</h3>
+          <p class="media-desc">
+            BraveWords covers the debut single: the Franco-Indian prog rock duo blends "80s aesthetics" with contemporary rock — "growls to choral harmonies, funky grooves to odd time signatures."
+          </p>
+          <a href="https://bravewords.com/news/mr-gng-releases-first-single-goodbye-mr-gng-music-video/" target="_blank" rel="noopener" class="media-link">Read on BraveWords →</a>
+        </div>
+      </div>
+
+      <div class="media-card reveal">
+        <div class="media-body">
+          <p class="media-source">Metal Shock Finland · Nov 2022</p>
+          <h3 class="media-title">Mr. GnG Get Up Close and Personal with Emotional Rock Ballad 'Within'</h3>
+          <p class="media-desc">
+            Metal Shock Finland features 'Within(Parenthesis)' — an emotionally charged rock ballad combining classic rock elements with the band's distinctive avant-garde instrumental work and rhythmic experimentation.
+          </p>
+          <a href="https://metalshockfinland.com/2022/11/25/mr-gng-get-up-close-and-personal-with-emotional-rock-ballad-within/" target="_blank" rel="noopener" class="media-link">Read on Metal Shock Finland →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     BOOK US
+     ════════════════════════════════════════ -->
+<section class="book-section" id="book">
+  <div class="container">
+    <div class="book-grid">
+
+      <!-- Form -->
+      <div>
+        <p class="label reveal">Get in Touch</p>
+        <h2 class="section-title reveal">Book mrgng</h2>
+        <p class="section-sub reveal">Got a show, festival, session, or collab in mind? Fill in the form — we respond within 48 hours.</p>
+
+        <form class="book-form reveal" id="bookForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Your Name</label>
+              <input class="form-input" type="text" id="f-name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-email">Email</label>
+              <input class="form-input" type="email" id="f-email" name="email" placeholder="jane@venue.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-type">Event Type</label>
+              <select class="form-select" id="f-type" name="event_type">
+                <option value="">Select…</option>
+                <option value="Concert / Gig">Concert / Gig</option>
+                <option value="Festival">Festival</option>
+                <option value="Private Event">Private Event</option>
+                <option value="Recording / Session">Recording / Session</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-date">Event Date</label>
+              <input class="form-input" type="date" id="f-date" name="event_date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-venue">Venue / Location</label>
+            <input class="form-input" type="text" id="f-venue" name="venue" placeholder="The venue name, city, country" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-msg">Tell us more</label>
+            <textarea class="form-textarea" id="f-msg" name="message" rows="5"
+              placeholder="Expected audience size, budget, special requirements, anything else…"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Booking Request</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <div class="form-success-title">Request sent!</div>
+          <p class="form-success-text">Thanks for reaching out. We'll get back to you within 48 hours.</p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="book-sidebar">
+        <div class="sidebar-card reveal">
+          <div class="sidebar-title">DM on Instagram</div>
+          <p class="sidebar-text">Prefer to reach out directly? Slide into our DMs — we're active and respond fast.</p>
+          <a href="https://www.instagram.com/mrgngofficial/" target="_blank" rel="noopener" class="ig-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+            @mrgngofficial
+          </a>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <div class="sidebar-title">Follow &amp; Stay Updated</div>
+          <p class="sidebar-text">New releases, shows, and behind-the-scenes — don't miss it.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/mrgngofficial/"                           target="_blank" rel="noopener" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              Instagram
+            </a>
+            <a href="https://www.tiktok.com/@mrgngofficial"                              target="_blank" rel="noopener" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              TikTok
+            </a>
+            <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"          target="_blank" rel="noopener" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>
+              YouTube
+            </a>
+            <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"            target="_blank" rel="noopener" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 14.5c2.5-1 5.5-.5 8 1M7 11.5c3.5-1.5 7.5-1 10.5 1M7.5 8.5c4-1.5 8.5-1 12 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Spotify
+            </a>
+            <a href="https://mrgng.bandcamp.com/"                                        target="_blank" rel="noopener" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17L9 7h12L15 17H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              Bandcamp
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal" style="background: var(--bg4); border-color: var(--border-a);">
+          <div class="sidebar-title" style="color: var(--accent);">Based in India &amp; France</div>
+          <p class="sidebar-text" style="margin-bottom: 0;">
+            Available for shows, festivals, and remote collaborations globally. We travel for the right gig.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">mrgng</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/mrgngofficial/"                         target="_blank" rel="noopener" class="footer-link">Instagram</a>
+        <a href="https://www.tiktok.com/@mrgngofficial"                            target="_blank" rel="noopener" class="footer-link">TikTok</a>
+        <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"          target="_blank" rel="noopener" class="footer-link">Spotify</a>
+        <a href="https://mrgng.bandcamp.com/"                                      target="_blank" rel="noopener" class="footer-link">Bandcamp</a>
+        <a href="https://music.apple.com/us/artist/mr-gng/1632418033"              target="_blank" rel="noopener" class="footer-link">Apple Music</a>
+        <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"        target="_blank" rel="noopener" class="footer-link">YouTube</a>
+      </div>
+      <p class="footer-copy">© 2025 Mr. GnG. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ───────────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  /* ── Hamburger + drawer ───────────────────────── */
+  const toggle = document.getElementById('navToggle');
+  const drawer = document.getElementById('navDrawer');
+  let open = false;
+
+  toggle.addEventListener('click', () => {
+    open = !open;
+    toggle.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      open = false;
+      toggle.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ── Tab switching ────────────────────────────── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    });
+  });
+
+  /* ── Scroll reveal ────────────────────────────── */
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -36px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ── Booking form ─────────────────────────────── */
+  document.getElementById('bookForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const type    = document.getElementById('f-type').value;
+    const date    = document.getElementById('f-date').value;
+    const venue   = document.getElementById('f-venue').value.trim();
+    const message = document.getElementById('f-msg').value.trim();
+
+    if (!name || !email) {
+      alert('Please enter your name and email.');
+      return;
+    }
+
+    /* ── Replace the address below with mrgng's actual booking email ── */
+    const TO = 'mrgngofficial@gmail.com';
+
+    const subject = encodeURIComponent(`Booking Enquiry — ${type || 'General'} · ${name}`);
+    const body = encodeURIComponent([
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Event type: ${type || 'Not specified'}`,
+      `Date: ${date || 'Not specified'}`,
+      `Venue / Location: ${venue || 'Not specified'}`,
+      '',
+      `Message:`,
+      message || '(none)'
+    ].join('\n'));
+
+    window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
+
+    /* Show success message after brief delay */
+    setTimeout(() => {
+      document.getElementById('bookForm').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    }, 600);
+  });
+</script>
+
+</body>
+</html>
