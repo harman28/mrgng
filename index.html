@@ -246,25 +246,55 @@
       text-align: center;
       padding: calc(var(--nav-h) + 60px) 24px 80px;
       overflow: hidden;
+      background-image: url('razed.jpg');
+      background-size: cover;
+      background-position: center center;
     }
-    /* Atmospheric glow */
+    /* Dark overlay — heavier at top/bottom, lighter in middle so image reads */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 55% at 50% 45%, rgba(201,168,76,.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(120,90,30,.04) 0%, transparent 60%);
+        linear-gradient(to bottom,
+          rgba(8,8,8,.72) 0%,
+          rgba(8,8,8,.42) 35%,
+          rgba(8,8,8,.52) 65%,
+          rgba(8,8,8,.88) 100%);
       pointer-events: none;
     }
     /* Film grain */
     .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
       pointer-events: none;
     }
 
     .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+    /* New-release badge */
+    .hero-new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(220,40,40,.15);
+      border: 1px solid rgba(220,40,40,.5);
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      margin-bottom: 28px;
+      font-family: var(--head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #ff5555;
+    }
+    .hero-new-badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #ff5555;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
 
     .hero-eyebrow {
       font-family: var(--head);
@@ -939,14 +969,17 @@
      ════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <p class="hero-eyebrow">Rock music · India &amp; France</p>
+    <div class="hero-new-badge">
+      <span class="hero-new-badge-dot"></span>
+      New Video Out Now
+    </div>
     <h1 class="hero-title">mrgng</h1>
     <p class="hero-tagline">
-      We make rock music and spend way too much time<br />making videos for all our songs.
+      R.A.Z.E.D — the new single.<br />Rock music from India &amp; France.
     </p>
     <div class="hero-actions">
-      <a href="#videos" class="btn-primary">Watch</a>
-      <a href="#book"   class="btn-outline">Book Us</a>
+      <a href="https://www.youtube.com/watch?v=GfBXqhigR98" target="_blank" rel="noopener" class="btn-primary">Watch R.A.Z.E.D</a>
+      <a href="#book" class="btn-outline">Book Us</a>
     </div>
     <div class="platforms">
       <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
@@ -977,6 +1010,22 @@
     <p class="label reveal">Music</p>
     <h2 class="section-title reveal">Videos</h2>
     <p class="section-sub reveal">Every song from EPonymous ships with its own visual — from cinematic music videos to intimate live sessions.</p>
+
+    <!-- Latest single featured above tabs -->
+    <div class="video-card reveal" style="margin-bottom: 48px; border-color: rgba(220,40,40,.35);">
+      <div class="video-embed">
+        <iframe src="https://www.youtube-nocookie.com/embed/GfBXqhigR98?rel=0&modestbranding=1"
+          title="Mr. GnG – R.A.Z.E.D (Official Music Video)"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-tag" style="color:#ff5555;">New Release · Official Music Video</p>
+        <h3 class="video-title">R.A.Z.E.D</h3>
+        <p class="video-meta">Latest single</p>
+      </div>
+    </div>
 
     <div class="tabs">
       <button class="tab-btn active" data-tab="mv">Music Videos</button>
