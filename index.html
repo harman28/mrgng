@@ -61,7 +61,7 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    section { padding: 96px 0; }
+    section { padding: 64px 0; }
 
     .label {
       font-family: var(--head);
@@ -85,7 +85,7 @@
       color: var(--dim);
       max-width: 560px;
       line-height: 1.8;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
     /* Buttons */
@@ -458,7 +458,7 @@
       width: 100%; height: 100%;
       border: none;
     }
-    .video-info { padding: 16px 20px 20px; }
+    .video-info { padding: 12px 16px 16px; }
     .video-tag {
       font-family: var(--head);
       font-size: 9px;
@@ -499,12 +499,12 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 52px;
       align-items: start;
     }
 
-    .about-text { font-size: 1.0625rem; color: var(--dim); line-height: 1.85; }
-    .about-text p { margin-bottom: 20px; }
+    .about-text { font-size: 1rem; color: var(--dim); line-height: 1.8; }
+    .about-text p { margin-bottom: 14px; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); font-weight: 500; }
 
@@ -520,17 +520,17 @@
 
     /* EP card */
     .ep-card {
-      margin-top: 40px;
+      margin-top: 24px;
       background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: var(--rl);
-      padding: 24px;
+      padding: 18px;
     }
     .ep-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 14px;
     }
     .ep-art {
       width: 60px; height: 60px;
@@ -553,38 +553,6 @@
     .ep-name { font-family: var(--head); font-size: 1.0625rem; font-weight: 700; color: var(--text); }
     .ep-date { font-size: .8125rem; color: var(--muted); margin-top: 3px; }
 
-    .tracklist { list-style: none; border-top: 1px solid var(--border); }
-    .tracklist li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: .875rem;
-    }
-    .track-num { font-family: var(--head); font-size: .75rem; color: var(--muted); width: 14px; flex-shrink: 0; }
-    .track-name { flex: 1; color: var(--text); font-weight: 500; }
-    .track-dur  { font-family: var(--head); font-size: .8rem; color: var(--muted); }
-
-    .ep-links {
-      display: flex;
-      gap: 10px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-    .stream-btn {
-      font-family: var(--head);
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      color: var(--dim);
-      transition: border-color var(--ease), color var(--ease);
-    }
-    .stream-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     /* Members */
     .members { display: flex; flex-direction: column; gap: 16px; }
@@ -592,9 +560,9 @@
       background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: var(--rl);
-      padding: 22px;
+      padding: 16px;
       display: flex;
-      gap: 18px;
+      gap: 14px;
       align-items: flex-start;
       transition: border-color var(--ease);
     }
@@ -636,7 +604,7 @@
     .media-card:hover { border-color: var(--border-a); }
     .media-card.span3 { grid-column: 1 / -1; }
 
-    .media-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .media-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
     .media-source {
       font-family: var(--head);
       font-size: 9px;
@@ -676,7 +644,7 @@
     .book-grid {
       display: grid;
       grid-template-columns: 7fr 5fr;
-      gap: 80px;
+      gap: 52px;
       align-items: start;
     }
 
@@ -752,7 +720,7 @@
       background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: var(--rl);
-      padding: 22px;
+      padding: 16px;
     }
     .sidebar-title { font-family: var(--head); font-size: .9375rem; font-weight: 600; color: var(--text); margin-bottom: 7px; }
     .sidebar-text  { font-size: .875rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
@@ -891,7 +859,7 @@
       .float-book   { display: none; }
       .mobile-bar   { display: flex; }
 
-      section { padding: 64px 0; }
+      section { padding: 48px 0; }
       #book { padding-bottom: 100px; }
       .footer { padding-bottom: 80px; }
 
@@ -997,7 +965,7 @@
         <a href="#book" class="btn-outline">Book Us</a>
       </div>
       <div class="platforms">
-        <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
+        <a href="https://open.spotify.com/artist/6jFFWI8mNURdPYM0W1BufB" target="_blank" rel="noopener" class="platform-pill">Spotify</a>
         <a href="https://mrgng.bandcamp.com/"                               target="_blank" rel="noopener" class="platform-pill">Bandcamp</a>
         <a href="https://music.apple.com/us/artist/mr-gng/1632418033"       target="_blank" rel="noopener" class="platform-pill">Apple Music</a>
         <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"  target="_blank" rel="noopener" class="platform-pill">YouTube</a>
@@ -1256,58 +1224,44 @@
           </p>
         </div>
 
+        <!-- R.A.Z.E.D — latest single -->
         <div class="ep-card reveal" style="border-color: var(--border-a);">
           <div class="ep-header">
-            <div class="ep-art" style="padding:0;overflow:hidden;background:var(--bg4);">
-              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:.55rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-align:center;text-transform:uppercase;line-height:1.4;">after Us<br/>The Flood</div>
+            <div class="ep-art" style="background: #1a0808; border-color: var(--border-a);">
+              <span style="font-size:.5rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-align:center;line-height:1.4;padding:4px;">R.A.Z.E.D</span>
+            </div>
+            <div>
+              <div class="ep-name">R.A.Z.E.D</div>
+              <div class="ep-date">Single · May 2026</div>
+            </div>
+          </div>
+          <iframe style="border-radius:6px;" src="https://open.spotify.com/embed/track/7EiW3spjeWjPLKitKVBgwD?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- after Us, The Flood -->
+        <div class="ep-card reveal" style="border-color: var(--border-a);">
+          <div class="ep-header">
+            <div class="ep-art" style="background:var(--bg4);">
+              <span style="font-size:.45rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-align:center;line-height:1.4;padding:4px;">after Us<br/>The Flood</span>
             </div>
             <div>
               <div class="ep-name">after Us, The Flood</div>
-              <div class="ep-date">Album · 2025</div>
+              <div class="ep-date">Album · 2025 · 12 tracks</div>
             </div>
           </div>
-          <ol class="tracklist">
-            <li><span class="track-num">1</span><span class="track-name">Cognitive Haze <span style="color:var(--muted);font-size:.8em">ft. Aatrey Bhatt</span></span><span class="track-dur">4:03</span></li>
-            <li><span class="track-num">2</span><span class="track-name">A Call Away <span style="color:var(--muted);font-size:.8em">ft. Aatrey Bhatt</span></span><span class="track-dur">4:20</span></li>
-            <li><span class="track-num">3</span><span class="track-name">Paralyse <span style="color:var(--muted);font-size:.8em">ft. Rudy Ayoub</span></span><span class="track-dur">4:32</span></li>
-            <li><span class="track-num">4</span><span class="track-name">Room 103</span><span class="track-dur">4:14</span></li>
-            <li><span class="track-num">5</span><span class="track-name">Mr. Invisible</span><span class="track-dur">3:38</span></li>
-            <li><span class="track-num">6</span><span class="track-name">Silence That Remains</span><span class="track-dur">3:32</span></li>
-            <li><span class="track-num">7</span><span class="track-name">Shimona</span><span class="track-dur">4:17</span></li>
-            <li><span class="track-num">8</span><span class="track-name">The Show Must Go On</span><span class="track-dur">3:53</span></li>
-            <li><span class="track-num">9</span><span class="track-name">The Melody Song I: Second Chances</span><span class="track-dur">1:44</span></li>
-            <li><span class="track-num">10</span><span class="track-name">The Melody Song II: No Place for Freaks</span><span class="track-dur">2:33</span></li>
-            <li><span class="track-num">11</span><span class="track-name">The Melody Song III: Your Gravity</span><span class="track-dur">2:26</span></li>
-            <li><span class="track-num">12</span><span class="track-name">The Melody Song IV: One Way Street</span><span class="track-dur">1:36</span></li>
-          </ol>
-          <div class="ep-links">
-            <a href="https://open.spotify.com/album/319UnXdX7uzKpAVeFey022"   target="_blank" rel="noopener" class="stream-btn">Spotify</a>
-            <a href="https://music.apple.com/us/album/after-us-the-flood/1802131065" target="_blank" rel="noopener" class="stream-btn">Apple Music</a>
-            <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A" target="_blank" rel="noopener" class="stream-btn">YouTube</a>
-          </div>
+          <iframe style="border-radius:6px;" src="https://open.spotify.com/embed/album/319UnXdX7uzKpAVeFey022?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
 
+        <!-- EPonymous -->
         <div class="ep-card reveal">
           <div class="ep-header">
             <div class="ep-art" style="padding:0;overflow:hidden;"><img src="youtube.jpg" alt="EPonymous cover" style="width:100%;height:100%;object-fit:cover;border-radius:3px;" /></div>
             <div>
               <div class="ep-name">EPonymous</div>
-              <div class="ep-date">Debut EP · December 25, 2022</div>
+              <div class="ep-date">Debut EP · December 25, 2022 · 5 tracks</div>
             </div>
           </div>
-          <ol class="tracklist">
-            <li><span class="track-num">1</span><span class="track-name">Goodbye, Mr. GnG</span><span class="track-dur">4:25</span></li>
-            <li><span class="track-num">2</span><span class="track-name">Within(Parenthesis)</span><span class="track-dur">6:18</span></li>
-            <li><span class="track-num">3</span><span class="track-name">Contraband 464</span><span class="track-dur">5:55</span></li>
-            <li><span class="track-num">4</span><span class="track-name">Halcyon Days</span><span class="track-dur">4:30</span></li>
-            <li><span class="track-num">5</span><span class="track-name">Chasing Dragon Tails</span><span class="track-dur">6:02</span></li>
-          </ol>
-          <div class="ep-links">
-            <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"         target="_blank" rel="noopener" class="stream-btn">Spotify</a>
-            <a href="https://mrgng.bandcamp.com/album/eponymous"                       target="_blank" rel="noopener" class="stream-btn">Bandcamp</a>
-            <a href="https://music.apple.com/us/artist/mr-gng/1632418033"              target="_blank" rel="noopener" class="stream-btn">Apple Music</a>
-            <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"        target="_blank" rel="noopener" class="stream-btn">YouTube</a>
-          </div>
+          <iframe style="border: 0; width: 100%; height: 350px; border-radius: 6px;" src="https://bandcamp.com/EmbeddedPlayer/album=1067226762/size=large/bgcol=111111/linkcol=d42020/tracklist=true/transparent=true/" seamless loading="lazy"></iframe>
         </div>
       </div>
 
@@ -1440,7 +1394,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>
               YouTube
             </a>
-            <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"            target="_blank" rel="noopener" class="social-link">
+            <a href="https://open.spotify.com/artist/6jFFWI8mNURdPYM0W1BufB"            target="_blank" rel="noopener" class="social-link">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 14.5c2.5-1 5.5-.5 8 1M7 11.5c3.5-1.5 7.5-1 10.5 1M7.5 8.5c4-1.5 8.5-1 12 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               Spotify
             </a>
@@ -1473,7 +1427,7 @@
       <div class="footer-links">
         <a href="https://www.instagram.com/mrgngofficial/"                         target="_blank" rel="noopener" class="footer-link">Instagram</a>
         <a href="https://www.tiktok.com/@mrgngofficial"                            target="_blank" rel="noopener" class="footer-link">TikTok</a>
-        <a href="https://open.spotify.com/artist/6eqLAUIm0u7CgcbjX9O5fb"          target="_blank" rel="noopener" class="footer-link">Spotify</a>
+        <a href="https://open.spotify.com/artist/6jFFWI8mNURdPYM0W1BufB"          target="_blank" rel="noopener" class="footer-link">Spotify</a>
         <a href="https://mrgng.bandcamp.com/"                                      target="_blank" rel="noopener" class="footer-link">Bandcamp</a>
         <a href="https://music.apple.com/us/artist/mr-gng/1632418033"              target="_blank" rel="noopener" class="footer-link">Apple Music</a>
         <a href="https://www.youtube.com/channel/UC6KXD7CKcvf7KNntq0E-33A"        target="_blank" rel="noopener" class="footer-link">YouTube</a>
