@@ -559,35 +559,52 @@
 
 
     /* Members */
-    .members { display: flex; flex-direction: column; gap: 16px; }
-    .member-card {
+    .members-section {
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .member-card-h {
       background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: var(--rl);
-      padding: 16px;
+      padding: 24px 16px 20px;
       display: flex;
-      gap: 14px;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       transition: border-color var(--ease);
     }
-    .member-card:hover { border-color: var(--border-a); }
-    .member-avatar {
-      width: 52px; height: 52px;
+    .member-card-h:hover { border-color: var(--border-a); }
+    .member-photo-circle {
+      width: 88px; height: 88px;
       border-radius: 50%;
       background: var(--bg4);
-      border: 1px solid var(--border-a);
+      border: 2px solid var(--border-a);
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--head);
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--accent);
+      margin-bottom: 14px;
+      overflow: hidden;
     }
-    .member-name { font-family: var(--head); font-size: .9375rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-    .member-role { font-size: .8125rem; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
-    .member-bio  { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+    .member-photo-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .member-name { font-family: var(--head); font-size: .9375rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .member-role { font-size: .8125rem; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+    .member-bio  { font-size: .8125rem; color: var(--muted); line-height: 1.65; }
 
     /* ── Media ──────────────────────────────────────── */
     .media-section { background: var(--bg); }
@@ -890,6 +907,7 @@
       .hero-poster  { display: none; }
 
       .about-grid, .book-grid { grid-template-columns: 1fr; gap: 48px; }
+      .members-grid { grid-template-columns: repeat(2, 1fr); }
       .video-grid, .media-grid { grid-template-columns: 1fr; }
       .video-card.span2, .media-card.span3 { grid-column: 1; }
       .form-row { grid-template-columns: 1fr; }
@@ -901,6 +919,7 @@
       .platform-pill { font-size: .65rem; padding: 6px 12px; }
       .photo-banner { height: 260px; }
       .media-grid { grid-template-columns: 1fr; }
+      .members-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1206,7 +1225,7 @@
   <div class="container">
     <div class="about-grid">
 
-      <!-- Left: story + EP -->
+      <!-- Left: story -->
       <div>
         <p class="label reveal">About the Band</p>
         <h2 class="section-title reveal">The Story</h2>
@@ -1230,7 +1249,10 @@
             The live line up consists of session players based in Ahmedabad.
           </p>
         </div>
+      </div>
 
+      <!-- Right: releases -->
+      <div>
         <!-- R.A.Z.E.D — latest single -->
         <div class="ep-card reveal" style="border-color: var(--border-a);">
           <div class="ep-header">
@@ -1272,40 +1294,66 @@
         </div>
       </div>
 
-      <!-- Right: members -->
-      <div>
-        <p class="label reveal">Members</p>
-        <div class="members">
-          <div class="member-card reveal">
-            <div class="member-avatar">ID</div>
-            <div>
-              <div class="member-name">Ishan Dave</div>
-              <div class="member-role">Vocals · Guitar · Producer</div>
-              <div class="member-bio">Based in India. Writes and records from home. Fronts mrgng with a guitar sound that swings between cathartic and carefully restrained — and directs the band's visual output.</div>
-            </div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-avatar">AS</div>
-            <div>
-              <div class="member-name">Abhilash Sreekumar</div>
-              <div class="member-role">Keys · Drums · Producer</div>
-              <div class="member-bio">Based in France. Handles the rhythmic and harmonic architecture across thousands of miles — late nights and a laptop producing every beat and chord on the EP.</div>
-            </div>
-          </div>
-
-          <div class="member-card reveal" style="opacity:.7; border-style: dashed;">
-            <div class="member-avatar" style="opacity:.5;">TN</div>
-            <div>
-              <div class="member-name">Thejus Nair</div>
-              <div class="member-role">Mix &amp; Mastering</div>
-              <div class="member-bio">Mixed and mastered EPonymous — shaping the final sonic character of mrgng's debut release.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Members — full-width horizontal grid -->
+    <div class="members-section">
+      <p class="label reveal">Members</p>
+
+      <div class="members-grid">
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">ID</div>
+          <div class="member-name">Ishan Dave</div>
+          <div class="member-role">Vocals · Guitar · Producer</div>
+          <div class="member-bio">Based in India. Writes and records from home. Fronts mrgng with a guitar sound that swings between cathartic and carefully restrained — and directs the band's visual output.</div>
+        </div>
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">AS</div>
+          <div class="member-name">Abhilash Sreekumar</div>
+          <div class="member-role">Keys · Drums · Producer</div>
+          <div class="member-bio">Based in France. Handles the rhythmic and harmonic architecture across thousands of miles — late nights and a laptop producing every beat and chord on the EP.</div>
+        </div>
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">V</div>
+          <div class="member-name">Vaastu</div>
+          <div class="member-role">Lead Guitar · Live</div>
+          <div class="member-bio">Ahmedabad's hottest new lead guitar rockstar, known for his session and live work for dozens of well known local outfits and musical acts. Newest member of the live line up, Vaastu wrote the solo for R.A.Z.E.D and features in the video. Joined in January 2026.</div>
+        </div>
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">MG</div>
+          <div class="member-name">Meet Gadhia</div>
+          <div class="member-role">Drums · Live</div>
+          <div class="member-bio">One of the oldest members of the live lineup, Meet has been playing with the band since 2022. Known for his groovy playing and incessant practice routines, Meet is the go-to drummer for many well known artists in Gujarat.</div>
+        </div>
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">RS</div>
+          <div class="member-name">Rohan Shah</div>
+          <div class="member-role">Keys · Live</div>
+          <div class="member-bio">Keyboardist by night and a businessman by day, Rohan is the youngest member of the family. Always ready for rehearsals and probably the most energetic member of the band.</div>
+        </div>
+
+        <div class="member-card-h reveal">
+          <div class="member-photo-circle">JJ</div>
+          <div class="member-name">Jagdis Jethwa</div>
+          <div class="member-role">Live Musician</div>
+          <div class="member-bio">Joined right before the comeback show at Rhaen Basra in April 2026. The most diligent and hard working member of the band, Jagdis plays live and in the studio with the likes of Aditya Gadhavi. Ishan met him when they played together for Kinjal Dave in November 2024.</div>
+        </div>
+
+        <div class="member-card-h reveal" style="opacity:.7; border-style: dashed;">
+          <div class="member-photo-circle" style="opacity:.5;">TN</div>
+          <div class="member-name">Thejus Nair</div>
+          <div class="member-role">Mix &amp; Mastering</div>
+          <div class="member-bio">Mixed and mastered EPonymous — shaping the final sonic character of mrgng's debut release.</div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
