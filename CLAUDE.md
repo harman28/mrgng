@@ -67,6 +67,7 @@ Member cards use class `.member-card-h` with `.member-photo-circle` containing a
 - **R.A.Z.E.D (single):** `7EiW3spjeWjPLKitKVBgwD`
 - **EPonymous** — Bandcamp embed only (album ID `147508948`). Not on Spotify.
 - **Apple Music artist:** `https://music.apple.com/us/artist/mr-gng/1632418033`
+- **YouTube channel:** `https://www.youtube.com/@MrGnG464` — used in footer, hero pills, and Book Us social links
 
 ## YouTube videos currently on site
 | Title | YouTube ID | Section |
@@ -83,7 +84,7 @@ Member cards use class `.member-card-h` with `.member-photo-circle` containing a
 - Instagram: `https://www.instagram.com/mrgngofficial/`
 - TikTok: `https://www.tiktok.com/@mrgngofficial`
 - Bandcamp: `https://mrgng.bandcamp.com/`
-- YouTube channel: `https://www.youtube.com/@MrGnG464`
+- YouTube: `https://www.youtube.com/@MrGnG464`
 - Booking email: `mrgngofficial@gmail.com`
 
 ## How to make changes
